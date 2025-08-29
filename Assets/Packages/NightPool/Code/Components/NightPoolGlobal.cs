@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if UNITY_EDITOR
     [DisallowMultipleComponent]
@@ -16,52 +16,52 @@ namespace NTC.Pool
 #endif
     public sealed class NightPoolGlobal : MonoBehaviour
     {
-        [Header("Main")] 
+        [Header("Main")]
         [Tooltip(Constants.Tooltips.GlobalUpdateType)]
         [SerializeField] private UpdateType _updateType = UpdateType.Update;
-        
+
         [Header("Preload Pools")]
         [Tooltip(Constants.Tooltips.GlobalPreloadType)]
         [SerializeField] private PreloadType preloadPoolsType = PreloadType.Disabled;
-        
+
         [Tooltip(Constants.Tooltips.PoolsToPreload)]
         [SerializeField] private PoolsPreset poolsPreset;
 
-        [Header("Global Pool Settings")] 
+        [Header("Global Pool Settings")]
         [Tooltip(Constants.Tooltips.OverflowBehaviour)]
         [SerializeField] internal BehaviourOnCapacityReached _behaviourOnCapacityReached = Constants.DefaultBehaviourOnCapacityReached;
-        
+
         [Tooltip(Constants.Tooltips.DespawnType)]
         [SerializeField] internal DespawnType _despawnType = Constants.DefaultDespawnType;
-        
+
         [Tooltip(Constants.Tooltips.CallbacksType)]
         [SerializeField] internal CallbacksType _callbacksType = Constants.DefaultCallbacksType;
-        
+
         [Tooltip(Constants.Tooltips.Capacity)]
         [SerializeField, Min(0)] internal int _capacity = 64;
-        
+
         [Tooltip(Constants.Tooltips.Persistent)]
         [SerializeField] internal bool _dontDestroyOnLoad;
 
         [Tooltip(Constants.Tooltips.Warnings)]
         [SerializeField] internal bool _sendWarnings = true;
-        
-        [Header("Safety")] 
+
+        [Header("Safety")]
         [Tooltip(Constants.Tooltips.NightPoolMode)]
         [SerializeField] internal NightPoolMode _nightPoolMode = Constants.DefaultNightPoolMode;
-        
+
         [Tooltip(Constants.Tooltips.DelayedDespawnReaction)]
         [SerializeField] internal ReactionOnRepeatedDelayedDespawn _reactionOnRepeatedDelayedDespawn = Constants.DefaultDelayedDespawnHandleType;
-        
+
         [Tooltip(Constants.Tooltips.DespawnPersistentClonesOnDestroy)]
         [SerializeField] private bool _despawnPersistentClonesOnDestroy = true;
-        
+
         [Tooltip(Constants.Tooltips.CheckClonesForNull)]
         [SerializeField] private bool _checkClonesForNull = true;
-        
+
         [Tooltip(Constants.Tooltips.CheckForPrefab)]
         [SerializeField] private bool _checkForPrefab = true;
-        
+
         [Tooltip(Constants.Tooltips.ClearEventsOnDestroy)]
         [SerializeField] private bool _clearEventsOnDestroy;
 
@@ -95,7 +95,7 @@ namespace NTC.Pool
                 HandleDespawnRequests(Time.deltaTime);
             }
         }
-        
+
         private void FixedUpdate()
         {
             if (_updateType == UpdateType.FixedUpdate)
@@ -103,7 +103,7 @@ namespace NTC.Pool
                 HandleDespawnRequests(Time.fixedDeltaTime);
             }
         }
-        
+
         private void LateUpdate()
         {
             if (_updateType == UpdateType.LateUpdate)
@@ -116,7 +116,7 @@ namespace NTC.Pool
         {
             NightPool.s_isApplicationQuitting = true;
         }
-        
+
         private void OnDestroy()
         {
             NightPool.ResetPool();
@@ -131,11 +131,10 @@ namespace NTC.Pool
         {
 #if DEBUG
             if (NightPool.s_instance != null && NightPool.s_instance != this)
-                throw new Exception($"The number of {nameof(NightPool)} instances in the scene is greater than one!"); 
-            
+                throw new Exception($"The number of {nameof(NightPool)} instances in the scene is greater than one!");
+
             if (enabled == false)
-                Debug.LogWarning($"The <{nameof(NightPoolGlobal)}> instance is disabled! " +
-                                 "Some functions may not work because of this!", this);
+                Debug.Log($"<color=yellow>[NightPool] The <{nameof(NightPoolGlobal)}> instance is disabled! Some functions may not work because of this!</color>", this);
 #endif
             NightPool.s_isApplicationQuitting = false;
             NightPool.s_instance = this;
@@ -150,7 +149,7 @@ namespace NTC.Pool
         {
             if (requiredType != preloadPoolsType)
                 return;
-            
+
             NightPool.InstallPools(poolsPreset);
         }
 
@@ -165,9 +164,9 @@ namespace NTC.Pool
                     NightPool.DespawnRequests.RemoveUnorderedAt(i);
                     continue;
                 }
-                
+
                 request.TimeToDespawn -= deltaTime;
-                
+
                 if (request.TimeToDespawn <= 0f)
                 {
                     NightPool.DespawnImmediate(request.Poolable);

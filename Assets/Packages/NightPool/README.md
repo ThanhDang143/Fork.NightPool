@@ -91,7 +91,7 @@ Find `NightPoolGlobal.cs` in the project files and drag it onto any game object.
 ## Basics
 Use static class `NightPool` to `Spawn` or `Despawn` game objects instead of `Instantiate` and `Destroy`.
 ```csharp
-using NTC.Pool;
+using ThanhDV.Pool;
 
 public class Example : MonoBehaviour
 {
@@ -604,7 +604,7 @@ Shows the current status of the clone.
 ## Particle System Auto Despawn
 You can despawn a particle system when it finishes playing using extension method `DespawnOnComplete` from the `NightPoolExtensions` class:
 ```csharp
-using NTC.Pool;
+using ThanhDV.Pool;
 
 public class Example : MonoBehaviour
 {

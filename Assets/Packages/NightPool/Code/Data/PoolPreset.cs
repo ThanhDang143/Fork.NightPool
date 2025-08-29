@@ -1,10 +1,12 @@
 ﻿using System;
+using ThanhDV.GameSaver.CustomAttribute;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 #if ENABLE_IL2CPP
 using Unity.IL2CPP.CompilerServices;
 #endif
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
     [Serializable]
 #if ENABLE_IL2CPP
@@ -19,7 +21,10 @@ namespace NTC.Pool
         [Space]
 #endif
         [SerializeField] private bool _enabled = true;
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private bool _useAddressable = false;
+        [SerializeField][HideIf("_useAddressable")] private GameObject _prefab;
+        [SerializeField][ShowIf("_useAddressable")] private AssetReferenceGameObject _prefabReference;
+
         [Tooltip(Constants.Tooltips.OverflowBehaviour)]
         [SerializeField] private BehaviourOnCapacityReached _behaviourOnCapacityReached = Constants.DefaultBehaviourOnCapacityReached;
         [Tooltip(Constants.Tooltips.DespawnType)]
@@ -33,6 +38,7 @@ namespace NTC.Pool
 
         public bool Enabled => _enabled;
         public GameObject Prefab => _prefab;
+        public AssetReferenceGameObject PrefabReference => _prefabReference;
         public BehaviourOnCapacityReached BehaviourOnCapacityReached => _behaviourOnCapacityReached;
         public DespawnType DespawnType => _despawnType;
         public CallbacksType CallbacksType => _callbacksType;

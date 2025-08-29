@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if UNITY_EDITOR
     [HelpURL(Constants.HelpUrl)]
@@ -19,19 +19,16 @@ namespace NTC.Pool
         {
             if (NightPool.IsClone(gameObject) == false)
             {
-                Debug.LogError("You have a Despawn Timer added to a game object that is not a clone!", this);
+                Debug.Log($"<color=red>[NightPool] You have a Despawn Timer added to a game object that is not a clone!</color>", this);
             }
-            
+
             if (NightPool.TryGetPoolByClone(gameObject, out NightGameObjectPool pool))
             {
                 if (pool.BehaviourOnCapacityReached == BehaviourOnCapacityReached.Recycle)
                 {
                     if (pool.CallbacksType == CallbacksType.None)
                     {
-                        Debug.LogWarning("Callbacks are disabled in this recycling pool! " +
-                                         "In a recycling pool, the timer may not reset when spawning! " +
-                                         "Enable callbacks in the pool or choose another " +
-                                         "'Behaviour On Capacity Reached' option.", pool);
+                        Debug.Log($"<color=yellow>[NightPool] Callbacks are disabled in this recycling pool! In a recycling pool, the timer may not reset when spawning! Enable callbacks in the pool or choose another 'Behaviour On Capacity Reached' option.</color>", pool);
                     }
                 }
             }
@@ -86,7 +83,7 @@ namespace NTC.Pool
         {
             if (_hasDespawnPerformed)
                 return false;
-            
+
             _elapsedTime += deltaTime;
 
             if (_elapsedTime >= _timeToDespawn)

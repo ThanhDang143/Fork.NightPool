@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
     internal static class Constants
     {
@@ -51,7 +51,7 @@ namespace NTC.Pool
                                              "Instantiate With Callbacks - instantiates clone which will not be cached in a pool; \n \n" +
                                              "Recycle - new clones force older ones to despawn; \n \n" +
                                              "Throw Exception - throws an exception.";
-            
+
             internal const string Capacity = "Default capacity for runtime created pools.";
             internal const string Persistent = "Should pools created at runtime be persistent?";
             internal const string Warnings = "Should pools created at runtime find issues and log warnings by default?";

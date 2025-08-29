@@ -1,4 +1,4 @@
-﻿namespace NTC.Pool
+﻿namespace ThanhDV.Pool
 {
     public interface IDespawnable
     {

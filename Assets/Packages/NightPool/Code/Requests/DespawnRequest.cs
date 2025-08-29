@@ -2,7 +2,7 @@
 using Unity.IL2CPP.CompilerServices;
 #endif
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if ENABLE_IL2CPP
     [Il2CppSetOption(Option.NullChecks, false)]

@@ -11,7 +11,7 @@ using Object = UnityEngine.Object;
 using Unity.IL2CPP.CompilerServices;
 #endif
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if ENABLE_IL2CPP
     [Il2CppSetOption(Option.NullChecks, false)]
@@ -25,7 +25,7 @@ namespace NTC.Pool
         internal GameObject _gameObject;
         internal PoolableStatus _status;
         internal bool _isSetup;
-        
+
         internal void SetupAsDefault()
         {
 #if DEBUG
@@ -36,7 +36,7 @@ namespace NTC.Pool
             _status = PoolableStatus.Despawned;
             _isSetup = true;
         }
-        
+
         internal void SetupAsSpawnedOverCapacity()
         {
 #if DEBUG
@@ -51,7 +51,7 @@ namespace NTC.Pool
         internal void Dispose(bool immediately)
         {
             NightPool.ClonesMap.Remove(_gameObject);
-            
+
             if (immediately)
                 Object.DestroyImmediate(_gameObject);
             else

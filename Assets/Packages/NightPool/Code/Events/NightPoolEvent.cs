@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.IL2CPP.CompilerServices;
 #endif
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if ENABLE_IL2CPP
     [Il2CppSetOption(Option.NullChecks, false)]
@@ -44,7 +44,7 @@ namespace NTC.Pool
             _action = null;
             _hasAction = false;
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void RaiseEvent(T objectToRaise)
         {

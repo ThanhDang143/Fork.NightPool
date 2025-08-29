@@ -1,5 +1,5 @@
-﻿namespace NTC.Pool
-{ 
+﻿namespace ThanhDV.Pool
+{
     internal enum UpdateType
     {
         Update,

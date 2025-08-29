@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
     public static class NightPoolExtensions
     {
@@ -13,6 +13,16 @@ namespace NTC.Pool
         {
             NightPool.Despawn(particleSystem.gameObject, particleSystem.main.duration);
             return particleSystem;
+        }
+
+        public static NightGameObjectPool CreatePool(GameObject _prefab)
+        {
+            GameObject poolObject = new GameObject($"[NightPool] {_prefab.name}");
+            NightGameObjectPool goPool = poolObject.AddComponent<NightGameObjectPool>();
+
+            goPool.Init(_prefab);
+
+            return goPool;
         }
     }
 }

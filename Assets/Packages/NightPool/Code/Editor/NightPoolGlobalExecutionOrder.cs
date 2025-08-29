@@ -2,7 +2,7 @@
 using System;
 using UnityEditor;
 
-namespace NTC.Pool.ExecutionOrder
+namespace ThanhDV.Pool.ExecutionOrder
 {
     [InitializeOnLoad]
     internal sealed class NightPoolGlobalExecutionOrder
@@ -10,19 +10,19 @@ namespace NTC.Pool.ExecutionOrder
         static NightPoolGlobalExecutionOrder()
         {
             Type nightPoolType = typeof(NightPoolGlobal);
-            
+
             foreach (MonoScript runtimeMonoScript in MonoImporter.GetAllRuntimeMonoScripts())
             {
                 if (runtimeMonoScript.GetClass() != nightPoolType)
                     continue;
-                
+
                 int currentExecutionOrder = MonoImporter.GetExecutionOrder(runtimeMonoScript);
 
                 if (currentExecutionOrder != Constants.NightPoolExecutionOrder)
                 {
                     MonoImporter.SetExecutionOrder(runtimeMonoScript, Constants.NightPoolExecutionOrder);
                 }
-                
+
                 return;
             }
         }

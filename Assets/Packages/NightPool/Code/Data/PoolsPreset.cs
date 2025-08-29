@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if UNITY_EDITOR
     [CreateAssetMenu(menuName = Constants.PoolsPresetComponentPath, fileName = "Pools Preset", order = 0)]

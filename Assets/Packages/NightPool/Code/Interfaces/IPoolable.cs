@@ -1,7 +1,7 @@
-﻿namespace NTC.Pool
+﻿namespace ThanhDV.Pool
 {
     public interface IPoolable : ISpawnable, IDespawnable
     {
-        
+
     }
 }

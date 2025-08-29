@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using Unity.IL2CPP.CompilerServices;
 #endif
 
-namespace NTC.Pool
+namespace ThanhDV.Pool
 {
 #if ENABLE_IL2CPP
     [Il2CppSetOption(Option.NullChecks, false)]
@@ -26,7 +26,7 @@ namespace NTC.Pool
         internal NightPoolList(int capacity = 32)
         {
 #if DEBUG
-            if (capacity <= 0) 
+            if (capacity <= 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Capacity must be greater than zero!");
 #endif
             _components = new T[capacity];
@@ -61,7 +61,7 @@ namespace NTC.Pool
             {
                 _components[i] = i + 1 < _count ? _components[i + 1] : default;
             }
-            
+
             _count--;
         }
 
@@ -71,17 +71,17 @@ namespace NTC.Pool
             Array.Clear(_components, 0, _count);
             _count = 0;
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void SetCapacity(int capacity)
         {
 #if DEBUG
-            if (capacity <= 0) 
+            if (capacity <= 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Capacity must be greater than zero!");
 #endif
             if (_components.Length == capacity)
                 return;
-            
+
             Array.Resize(ref _components, capacity);
 
             if (_count > capacity)
@@ -94,7 +94,7 @@ namespace NTC.Pool
         {
             if (_count <= id)
                 throw new ArgumentOutOfRangeException(nameof(id), "Index is greater than count!");
-            
+
             if (_count <= 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "List is empty, nothing to remove!");
         }

@@ -21,9 +21,7 @@ namespace ThanhDV.Pool
         [Space]
 #endif
         [SerializeField] private bool _enabled = true;
-        [SerializeField] private bool _useAddressable = false;
         [SerializeField][HideIf("_useAddressable")] private GameObject _prefab;
-        [SerializeField][ShowIf("_useAddressable")] private AssetReferenceGameObject _prefabReference;
 
         [Tooltip(Constants.Tooltips.OverflowBehaviour)]
         [SerializeField] private BehaviourOnCapacityReached _behaviourOnCapacityReached = Constants.DefaultBehaviourOnCapacityReached;
@@ -38,7 +36,6 @@ namespace ThanhDV.Pool
 
         public bool Enabled => _enabled;
         public GameObject Prefab => _prefab;
-        public AssetReferenceGameObject PrefabReference => _prefabReference;
         public BehaviourOnCapacityReached BehaviourOnCapacityReached => _behaviourOnCapacityReached;
         public DespawnType DespawnType => _despawnType;
         public CallbacksType CallbacksType => _callbacksType;

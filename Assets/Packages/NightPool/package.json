@@ -1,18 +1,18 @@
 {
-    "name": "com.nighttraincode.nightpool",
+    "name": "thanhdv.nighttraincode.nightpool",
     "author": {
-        "name": "Night Train Code",
-        "url": "https://www.youtube.com/@NightTrainCode/"
+        "name": "ThanhDV",
+        "email": "vanthanh1998@gmail.com",
+        "url": "https://books.thanhdv.icu/"
     },
-    "displayName": "Night Pool",
+    "displayName": "ThanhDV's NightPool",
     "description": "Night Pool is a fast game object pool for Unity.",
-    "unity": "2020.3",
-    "version": "3.1.1",
+    "unity": "2022.3",
+    "version": "3.1.2",
     "keywords": [
         "nightpool",
         "objectpool",
         "objectpooling",
-        "nighttraincode",
         "performance"
     ],
     "dependencies": {
@@ -20,6 +20,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/MeeXaSiK/NightPool.git"
-    }
+        "url": "git+https://github.com/ThanhDang143/Fork.NightPool.git"
+    },
+    "changelogUrl": "https://github.com/ThanhDang143/Fork.NightPool/blob/main/Assets/Packages/NightPool/CHANGELOG.md",
+    "license": "MIT"
 }

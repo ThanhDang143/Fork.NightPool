@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Reflection;
@@ -45,3 +46,4 @@ namespace ThanhDV.GameSaver.Editor
         }
     }
 }
+#endif

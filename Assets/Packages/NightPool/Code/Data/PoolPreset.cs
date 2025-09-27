@@ -1,7 +1,5 @@
 ﻿using System;
-using ThanhDV.GameSaver.CustomAttribute;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 #if ENABLE_IL2CPP
 using Unity.IL2CPP.CompilerServices;
 #endif
@@ -21,7 +19,7 @@ namespace ThanhDV.Pool
         [Space]
 #endif
         [SerializeField] private bool _enabled = true;
-        [SerializeField][HideIf("_useAddressable")] private GameObject _prefab;
+        [SerializeField] private GameObject _prefab;
 
         [Tooltip(Constants.Tooltips.OverflowBehaviour)]
         [SerializeField] private BehaviourOnCapacityReached _behaviourOnCapacityReached = Constants.DefaultBehaviourOnCapacityReached;
